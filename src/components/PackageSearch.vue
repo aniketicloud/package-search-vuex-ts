@@ -8,21 +8,24 @@
   </div>
 </template>
 
-<script lang="ts">  
+<script lang="ts">
 import { defineComponent } from 'vue';
+
+// store imports
+import { Modules, PackagesActions } from '@/constants/store';
 import { mapActions } from 'vuex';
 
 export default defineComponent({
   name: 'PackageSearch',
   data() {
     return {
-      searchTerm: ''
+      searchTerm: 'react'
     };
   },
 
   methods: {
-    ...mapActions('packagesModule', {
-      fetchPackageDetails: 'fetchPackages'
+    ...mapActions(Modules.PACKAGE_MODULE, {
+      fetchPackageDetails: PackagesActions.FETCH_PACKAGES
     })
   }
 });

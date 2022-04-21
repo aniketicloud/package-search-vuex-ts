@@ -1,44 +1,10 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
 
-const npm_search_url: string = 'https://registry.npmjs.org/-/v1/search';
+// module imports
+import { packagesModule } from './modules/packages';
 
-const packagesModule = {
-  namespaced: true,
-  state: () => ({
-    packages: null,
-    loading: null,
-    error: null
-    // packages: Object,
-    // loading: Boolean,
-    // error: String
-  }),
-  getters: {
-    getPackageNames(state: any) {
-      return state.packages;
-    }
-  },
-  mutations: {
-    setPackages(state: any, packagesData: any) {
-      state.packages = packagesData;
-    }
-  },
-  actions: {
-    async fetchPackages({ commit }: any, searchParam: string) {
-      try {
-        const { data } = await axios.get(npm_search_url, {
-          params: {
-            text: searchParam
-          }
-        });
-
-        commit('setPackages', data);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    }
-  }
-};
+// const imports
+import { Modules } from '@/constants/store';
 
 export default createStore({
   state: {},
@@ -46,6 +12,6 @@ export default createStore({
   mutations: {},
   actions: {},
   modules: {
-    packagesModule: packagesModule
+    [Modules.PACKAGE_MODULE]: packagesModule
   }
 });
