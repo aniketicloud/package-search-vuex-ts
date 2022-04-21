@@ -1,17 +1,17 @@
 <template>
   <div>
-    <PackageSearch />
+    <SearchPage />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PackageSearch from './components/PackageSearch.vue';
+import SearchPage from './pages/SearchPage.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    PackageSearch
+    SearchPage
   }
 });
 </script>
