@@ -12,7 +12,7 @@ export const actions = {
         }
       });
 
-      commit(PackagesMutations.SET_ALL_PACKAGE_DETAILS, data);
+      commit(PackagesMutations.SET_PACKAGE_DETAILS, data);
     } catch (error) {
       console.log('Error: ', error);
     }

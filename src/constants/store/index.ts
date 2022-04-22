@@ -3,15 +3,17 @@ export enum Modules {
 }
 
 export enum PackagesState {
-  PACKAGES = 'packages'
+  PACKAGE_DETAILS = 'packageDetails',
 }
 
 export enum PackagesGetters {
-  GET_ALL_PACKAGE_DETAILS = 'getAllPackageDetails'
+  GET_PACKAGE_DETAILS = 'getPackageDetails',
+  GET_PACKAGE_NAMES = 'getPackageNames'
 }
 
 export enum PackagesMutations {
-  SET_ALL_PACKAGE_DETAILS = 'SET_ALL_PACKAGE_DETAILS'
+  SET_PACKAGE_DETAILS = 'SET_PACKAGE_DETAILS',
+  SET_PACKAGE_NAMES = 'SET_PACKAGE_NAMES'
 }
 
 export enum PackagesActions {
