@@ -113,3 +113,69 @@ enum UserStoreMutations {
     }
 
    ```
+
+4. Implementing the new state in Vuex
+
+   - In this example, you should set the `loading` state
+   - to `true` : when you are fetching the data from the API end poing ( from the backend ) and
+   - to `false` : when the http requests succeeds or fails. ( with try catch block)
+   - So open `actions.ts` ( Ctrl + P and type actions) and commit the mutations like following
+
+   ```
+    async [PackagesActions.FETCH_PACKAGES]({ commit }: any, searchParam: string) {
+      try {
+
+        // set loading to true when you are making a http request
+        commit(PackagesMutations.SET_LOADING, true);
+        const response: { data: ApiResponseData } = await axios.get(
+          npm_search_url,
+          {
+            params: {
+              text: searchParam
+            }
+          }
+        );
+
+        commit(PackagesMutations.SET_PACKAGE_DETAILS, response.data);
+        // => set loading to false when the http request is a success
+        commit(PackagesMutations.SET_LOADING, false);
+      } catch (error) {
+        console.log('Error: ', error);
+
+        // => set loading to false when the http request is failed
+        commit(PackagesMutations.SET_LOADING, false);
+      }
+    }
+   ```
+
+5. Using the Vuex in Vue components
+
+   - In this example, you should set show the list of packages based on the `loading` state
+   - To make use of enum in Vue components, instead of accessing the store with `$store`, use helper functions like mapGetters, mapMutations, mapActions.
+   - This way, the code will be cleaner and easy to work with ( for me at least)
+   - For example, first argument in mapGetters is Module Name(optional) and the second argument is map of getters you want to use
+   - You can get the module name with enum import. Just type Modules and import the module name.
+   - for second argument, you can use the getters as it is by passing the names as strings in an array. ( like ['getterA', ModuleGetter.GETTER_ONE])
+   - OR => for second argument pass an object like this
+
+   ```
+    ...mapGetters(Modules.PACKAGE_MODULE, {
+      ifLoading: PackagesGetters.GET_LOADING_STATE
+    })
+   ```
+
+   - if you want to pass the argument in this format like in when you are calling the mutation/action with map helper function. see below
+
+   ```
+    ...mapActions(Modules.PACKAGE_MODULE, {
+        fetchPackageDetails: PackagesActions.FETCH_PACKAGES
+      })
+   ```
+
+   ```
+    <template>
+      <button @click="fetchPackageDetails(searchTerm)">
+        Search
+      </button>
+    </template>
+   ```
