@@ -11,5 +11,9 @@ export const getters = {
       return _packageItem.package.name;
     });
     return packageNames;
+  },
+
+  [PackagesGetters.GET_LOADING_STATE](state: PackagesStoreStateInterface) {
+    return state.loading;
   }
 };

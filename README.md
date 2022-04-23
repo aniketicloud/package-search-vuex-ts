@@ -76,10 +76,40 @@ enum UserStoreMutations {
 
    - Edit or Add new interface in `src\typings\store\index.ts` like below ( there are not many interfaces, so I am just adding everything in `index.ts`)
    - In this example, you only need to edit the interface for vuex store state
+   - just type [PackagesState] and use auto complete.
+   - VS Code Editor will auto import the enum and will show you the available vuex state
 
    ```
    export interface PackagesStoreStateInterface {
    [PackagesState.PACKAGE_DETAILS]: null | PackageDetails[];
    [PackagesState.LOADING]: boolean
    }
+   ```
+
+3. State, Getters, Mutations, Actions(if any) for the new state ( loading )
+
+   - Open state.ts| getters.ts |mutations.ts | actions.ts from store folder. ( just hit Ctrl + P and type the name of the file )
+   - Use auto complete to add the enum name for the particular function in these files.
+   - I recommend to start from state.ts
+
+   ```
+   // state.ts
+   export const state: PackagesStoreStateInterface = {
+      [PackagesState.PACKAGE_DETAILS]: null,
+      [PackagesState.LOADING]: false
+    };
+
+    // getters.ts
+    [PackagesGetters.GET_LOADING_STATE](state: PackagesStoreStateInterface) {
+      return state.loading;
+    }
+
+    // mutations.ts
+    [PackagesMutations.SET_LOADING](
+    state: PackagesStoreStateInterface,
+    loadingStatePayload: boolean
+    ) {
+      state.loading = loadingStatePayload;
+    }
+
    ```

@@ -7,5 +7,12 @@ export const mutations = {
     packagesData: ApiResponseData
   ) {
     state.packageDetails = packagesData.objects;
+  },
+
+  [PackagesMutations.SET_LOADING](
+    state: PackagesStoreStateInterface,
+    loadingStatePayload: boolean
+  ) {
+    state.loading = loadingStatePayload;
   }
 };
