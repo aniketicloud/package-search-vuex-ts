@@ -1,13 +1,14 @@
 import { PackagesGetters } from '@/constants/store';
+import { PackagesStoreStateInterface } from '@/typings/store';
 
 export const getters = {
-  [PackagesGetters.GET_PACKAGE_DETAILS](state: any) {
+  [PackagesGetters.GET_PACKAGE_DETAILS](state: PackagesStoreStateInterface) {
     return state.packageDetails;
   },
 
-  [PackagesGetters.GET_PACKAGE_NAMES](state: any, getters: any) {
-    const packageNames = state.packageDetails.map((_package: any) => {
-      return _package.package.name;
+  [PackagesGetters.GET_PACKAGE_NAMES](state: PackagesStoreStateInterface) {
+    const packageNames = state.packageDetails?.map((_packageItem) => {
+      return _packageItem.package.name;
     });
     return packageNames;
   }
