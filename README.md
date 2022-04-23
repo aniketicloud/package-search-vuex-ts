@@ -48,7 +48,7 @@ enum UserStoreMutations {
 
 1. Enum
 
-   - add new enums in `src\constants\store\index.ts` like below ( there are not many constants, so I am just adding everything in `index.ts`)
+   - Add new enums in `src\constants\store\index.ts` like below ( there are not many constants, so I am just adding everything in `index.ts`)
      - state enum
      - getters enum
      - mutation enum
@@ -70,4 +70,16 @@ enum UserStoreMutations {
      SET_LOADING = 'SET_LOADING'
    }
 
+   ```
+
+2. Interface or Typing
+
+   - Edit or Add new interface in `src\typings\store\index.ts` like below ( there are not many interfaces, so I am just adding everything in `index.ts`)
+   - In this example, you only need to edit the interface for vuex store state
+
+   ```
+   export interface PackagesStoreStateInterface {
+   [PackagesState.PACKAGE_DETAILS]: null | PackageDetails[];
+   [PackagesState.LOADING]: boolean
+   }
    ```

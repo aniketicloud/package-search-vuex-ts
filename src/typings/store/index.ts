@@ -1,20 +1,18 @@
 import { PackagesState } from '@/constants/store';
 
+// vuex state interface as it is mosly used
+//  as an argument to the new functions in getters and mutations
+export interface PackagesStoreStateInterface {
+  [PackagesState.PACKAGE_DETAILS]: null | PackageDetails[];
+  [PackagesState.LOADING]: boolean
+}
+
+// interfaces for data you will use through out the application
 export interface ApiResponseData {
   objects: PackageDetails[];
   time: string;
   total: number;
 }
-export interface PackagesStoreStateInterface {
-  [PackagesState.PACKAGE_DETAILS]: null | PackageDetails[];
-}
-export interface PackageInterface {
-  name: string;
-  date: string;
-  description: string;
-  version: string;
-}
-
 interface PackageDetails {
   package: PackageInterface;
   score: {
@@ -26,4 +24,10 @@ interface PackageDetails {
     };
   };
   searchScore: number;
+}
+export interface PackageInterface {
+  name: string;
+  date: string;
+  description: string;
+  version: string;
 }
