@@ -19,7 +19,7 @@ export default defineComponent({
   name: 'PackageSearch',
   data() {
     return {
-      searchTerm: 'react'
+      searchTerm: ''
     };
   },
 
