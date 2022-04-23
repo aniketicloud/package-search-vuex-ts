@@ -41,3 +41,33 @@ enum UserStoreMutations {
 - All the typings or interfaces can be added in folder below
   - `src\typings\`
   - just like in `constants` use the same design pattern of adding `index.ts` to have single source of access
+
+## Procedure to add new state and it's currosponding operations
+
+- I am taking an example of one common state in vuex store and that is `loading` state
+
+1. Enum
+
+   - add new enums in `src\constants\store\index.ts` like below ( there are not many constants, so I am just adding everything in `index.ts`)
+     - state enum
+     - getters enum
+     - mutation enum
+     - in this example enum in actions is not required, but we can add the enum for fetching data
+
+   ```
+   // state
+   export enum PackagesState {
+     LOADING = 'loading',
+   }
+
+   // getters
+   export enum PackagesGetters {
+     GET_LOADING_STATE = 'getLoadingState'
+   }
+
+   // mutations
+   export enum PackagesMutations {
+     SET_LOADING = 'SET_LOADING'
+   }
+
+   ```
