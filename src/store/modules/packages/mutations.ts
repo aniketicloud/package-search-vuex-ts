@@ -14,5 +14,12 @@ export const mutations = {
     loadingStatePayload: boolean
   ) {
     state.loading = loadingStatePayload;
+  },
+
+  [PackagesMutations.SET_ERROR](
+    state: PackagesStoreStateInterface,
+    errorPayload: string | null
+  ) {
+    state.error = errorPayload;
   }
 };

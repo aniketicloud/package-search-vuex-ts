@@ -15,5 +15,9 @@ export const getters = {
 
   [PackagesGetters.GET_LOADING_STATE](state: PackagesStoreStateInterface) {
     return state.loading;
+  },
+
+  [PackagesGetters.GET_ERROR](state: PackagesStoreStateInterface) {
+    return state.error;
   }
 };

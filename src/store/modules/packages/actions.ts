@@ -20,8 +20,10 @@ export const actions = {
       commit(PackagesMutations.SET_PACKAGE_DETAILS, response.data);
       commit(PackagesMutations.SET_LOADING, false);
     } catch (error) {
-      console.log('Error: ', error);
+      console.log(error);
+
       commit(PackagesMutations.SET_LOADING, false);
+      commit(PackagesMutations.SET_ERROR, error);
     }
   }
 };

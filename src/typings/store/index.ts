@@ -4,7 +4,8 @@ import { PackagesState } from '@/constants/store';
 //  as an argument to the new functions in getters and mutations
 export interface PackagesStoreStateInterface {
   [PackagesState.PACKAGE_DETAILS]: null | PackageDetails[];
-  [PackagesState.LOADING]: boolean
+  [PackagesState.LOADING]: boolean;
+  [PackagesState.ERROR]: string | null;
 }
 
 // interfaces for data you will use through out the application
